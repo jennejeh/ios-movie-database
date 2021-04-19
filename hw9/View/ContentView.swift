@@ -40,7 +40,7 @@ struct ContentView: View {
     var content = "content"
     var body: some View {
         TabView {
-            Text("")
+            SearchView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("Search")

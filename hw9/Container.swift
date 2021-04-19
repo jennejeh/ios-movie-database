@@ -18,6 +18,7 @@ struct Container <Content : View> : View {
         content
             .padding()
             .cornerRadius(20)
+         
        
     }
 }
