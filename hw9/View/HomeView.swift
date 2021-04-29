@@ -14,46 +14,55 @@ import Kingfisher
 struct HomeView: View {
     @StateObject var homeVM = HomeVM()
     @State private var showMovie = true
-    
+    @State var showToast : Bool = false
+    @State var added: Bool = false
+    @State var title: String = ""
+ 
     var body: some View {
-        if homeVM.fetched == false {
+        if !homeVM.fetched {
             ProgressView("Fetching Data...")
         }
         else {
             NavigationView{
                 VStack{
                     if showMovie {
-                        Toggle("", isOn: $showMovie)
                         ScrollView {
                             Container{
                                 CarouselView(title: "Now Playing", movies: homeVM.currentmovies)
                             }
                             Container{
-                                CarouselView2(title: "Top Rated", movies: homeVM.topmovies)
+                                CarouselView2(showToast: $showToast, added: $added, title: $title, headline: "Top Rated", movies: homeVM.topmovies)
+                                
                             }
                             Container{
-                                CarouselView2(title: "Popular", movies: homeVM.popularmovies)
+                                CarouselView2(showToast: $showToast, added: $added, title: $title, headline: "Popular", movies: homeVM.popularmovies)
                             }
                             
                         }
                     }
                     else {
-                        Toggle("", isOn: $showMovie)
-                        
+                        ScrollView {
                         Container{
                             CarouselView(title: "Trending", movies: homeVM.trendingshows)
                         }
                         Container{
-                            CarouselView2(title: "Top Rated", movies: homeVM.topshows)
+                            CarouselView2(showToast: $showToast, added: $added, title:  $title, headline: "Top Rated", movies: homeVM.topshows)
                         }
                         Container{
-                            CarouselView2(title: "Popular", movies: homeVM.popularshows)
+                            CarouselView2(showToast: $showToast, added: $added, title: $title, headline: "Popular", movies: homeVM.popularshows)
+                        }
                         }
                     }
                 }.navigationBarTitle("USC Films")
-                .navigationBarItems(trailing: Button("Movies"){
-                                        showMovie.toggle()})
-                
+                .navigationBarItems(trailing:  Button(action: {
+                    self.showMovie = !self.showMovie
+                }, label: {
+                    Text(self.showMovie ? "TV Shows" : "Movies")
+                }))   
+            }.toast(isPresented: $showToast) {
+                HStack {
+                    Text(title + "\(added ? " was removed from" : " was added to") Watchlist").multilineTextAlignment(.center)
+                }
             }
         }
     }

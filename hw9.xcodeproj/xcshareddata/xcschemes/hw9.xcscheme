@@ -10,13 +10,41 @@
             buildForTesting = "YES"
             buildForRunning = "YES"
             buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "508C08B3262778B600345CDD"
                BuildableName = "hw9.app"
                BlueprintName = "hw9"
+               ReferencedContainer = "container:hw9.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "508C08C4262778BB00345CDD"
+               BuildableName = "hw9Tests.xctest"
+               BlueprintName = "hw9Tests"
+               ReferencedContainer = "container:hw9.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "508C08CF262778BB00345CDD"
+               BuildableName = "hw9UITests.xctest"
+               BlueprintName = "hw9UITests"
                ReferencedContainer = "container:hw9.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,26 +56,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "508C08C4262778BB00345CDD"
-               BuildableName = "hw9Tests.xctest"
-               BlueprintName = "hw9Tests"
-               ReferencedContainer = "container:hw9.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "508C08CF262778BB00345CDD"
-               BuildableName = "hw9UITests.xctest"
-               BlueprintName = "hw9UITests"
-               ReferencedContainer = "container:hw9.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

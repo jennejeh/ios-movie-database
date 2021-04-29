@@ -37,29 +37,31 @@ import Kingfisher
 //}
 struct ContentView: View {
     @StateObject var hm = HomeVM()
+    @State private var selection = 1
     var content = "content"
     var body: some View {
-        TabView {
+        TabView(selection: $selection) {
             SearchView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
                 }
+                .tag(2)
             HomeView()
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
-                }
-                
-            Text("")
+                }.tag(1)
+            WatchlistView()
                 .font(.system(size: 30, weight: .bold, design: .rounded))
                 .tabItem {
                     Image(systemName: "heart")
                     Text("Watchlist")
                 }
+                .tag(3)
         }
     }
-        }
+}
 
 
 struct ContentView_Previews: PreviewProvider {

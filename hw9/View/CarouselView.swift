@@ -15,20 +15,32 @@ var filler = [ Movie(id: 1, title: "title", backdrop_path: "https://image.tmdb.o
 struct CarouselView: View {
     let title: String
     let movies: [Movie]
-
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text(title).font(.title).fontWeight(.bold).padding(.horizontal)
+        
+        LazyVStack(alignment: .leading, spacing: 0) {
+            Text(title).font(.title).fontWeight(.bold)
             ScrollView {
                 GeometryReader { geometry in
                     ImageCarouselView(numberOfImages: 5) {
                         ForEach(self.movies) {
                             movie in
-                            KFImage(URL(string:  movie.backdrop_path ))
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 375, height: 300)
-                                .clipped()
+                            NavigationLink(destination: DetailView(id:movie.id, media_type: movie.media_type)) {
+                                ZStack{
+                                    KFImage(URL(string: movie.backdrop_path))
+                                        .resizable().scaledToFill()
+                                        .frame(width: geometry.size.width, height: geometry.size.height)
+                                        .clipped()
+                                        .padding(10)
+                                        .blur(radius: 32)
+                                    
+                                    KFImage(URL(string: movie.backdrop_path))
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 375, height: 300, alignment: .center)
+                                        .clipped()
+                                }
+                            }
                         }
                     }
                 }.frame(height: 300, alignment: .center)
