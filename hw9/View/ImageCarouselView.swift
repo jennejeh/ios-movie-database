@@ -26,12 +26,12 @@ struct ImageCarouselView<Content: View>: View {
             HStack(spacing: 0) {
                 self.content
             }
-            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .leading)
-            .offset(x: CGFloat(self.currentIndex) * -geometry.size.width, y: 0)
+            .frame(width: 375, height: geometry.size.height, alignment: .leading)
+            .offset(x: CGFloat(self.currentIndex) * -375, y: 0)
             .animation(.spring())
             .onReceive(self.timer) { _ in
                 
-                self.currentIndex = (self.currentIndex + 1) % 3
+                self.currentIndex = (self.currentIndex + 1) % 5
             }
         }
     }

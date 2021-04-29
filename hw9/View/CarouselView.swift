@@ -20,24 +20,25 @@ struct CarouselView: View {
         
         LazyVStack(alignment: .leading, spacing: 0) {
             Text(title).font(.title).fontWeight(.bold)
+            Spacer()
             ScrollView {
                 GeometryReader { geometry in
                     ImageCarouselView(numberOfImages: 5) {
                         ForEach(self.movies) {
                             movie in
                             NavigationLink(destination: DetailView(id:movie.id, media_type: movie.media_type)) {
-                                ZStack{
+                                ZStack (alignment: .center){
                                     KFImage(URL(string: movie.backdrop_path))
                                         .resizable().scaledToFill()
                                         .frame(width: geometry.size.width, height: geometry.size.height)
                                         .clipped()
-                                        .padding(10)
+                                   
                                         .blur(radius: 32)
                                     
                                     KFImage(URL(string: movie.backdrop_path))
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: 375, height: 300, alignment: .center)
+                                        .frame(width: 375, height: 300)
                                         .clipped()
                                 }
                             }

@@ -196,6 +196,7 @@ struct CarouselView2: View {
     var body: some View {
         LazyVStack(alignment: .leading, spacing: 0) {
             Text(headline).font(.title).fontWeight(.bold)
+            Spacer()
             ScrollView (.horizontal) {
                 HStack(alignment: .top, spacing: 20){
                     ForEach(self.movies) {

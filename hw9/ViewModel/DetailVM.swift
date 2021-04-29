@@ -37,7 +37,7 @@ class DetailVM: ObservableObject{
                     for x in json["genres"] {
                         genres.append(x.1.stringValue)
                     }
-                    self.movie = Movie(id: id, title: json["title"].stringValue, release_date: json["release_date"].stringValue, vote_average: json["vote_average"].stringValue + "/5.0", overview: json["overview"].stringValue, genres: genres, trailer: trailer)
+                    self.movie = Movie(id: id, title: json["title"].stringValue, release_date: json["release_date"].stringValue, vote_average: json["vote_average"].stringValue + "/5.0", overview: json["overview"].stringValue, genres: genres, media_type: "movie", trailer: trailer)
                 }
                 url = base + "moviecast"
                 Alamofire.request(url,method: .get, parameters: parameters).responseData{ [self] (data) in
@@ -91,7 +91,7 @@ class DetailVM: ObservableObject{
                     for x in json["genres"] {
                         genres.append(x.1.stringValue)
                     }
-                    self.movie = Movie(id: id, title: json["name"].stringValue, release_date: json["first_air_date"].stringValue, vote_average: json["vote_average"].stringValue + "/5.0", overview: json["overview"].stringValue, genres: genres, trailer: trailer)
+                    self.movie = Movie(id: id, title: json["name"].stringValue, release_date: json["first_air_date"].stringValue, vote_average: json["vote_average"].stringValue + "/5.0", overview: json["overview"].stringValue, genres: genres, media_type: "tv", trailer: trailer)
                 }
                 
                 url = base + "tvcast"

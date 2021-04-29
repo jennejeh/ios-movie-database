@@ -19,7 +19,9 @@ class SearchVM: ObservableObject{
         let parameters: Parameters = [
             "query": query
         ]
-        let url = "http://127.0.0.1:8080/multi"
+        
+        let base = "http://127.0.0.1:8080/"
+        let url = base + "multi"
         Alamofire.request(url,method: .get, parameters: parameters).responseData{ (data) in
             let json = JSON(data.data!)
             for i in json {

@@ -18,17 +18,21 @@ struct ReviewView: View {
             ForEach(self.reviews) {
                 r in
                 NavigationLink(destination: ReviewExtendView(review: r, title: self.title)){
-                    LazyVStack(alignment: .leading, spacing: 0){
-                        Text("A review by " + r.username).font(.headline).fontWeight(.bold).frame(alignment: .leading).foregroundColor(Color.black)
-                        Text("Written by " + r.username + " on " + r.created_at).frame(alignment: .leading).foregroundColor(Color.gray)
-                        Spacer()
+                    LazyVStack(alignment: .leading, spacing: 5){
+                        LazyVStack(alignment: .leading, spacing: 0){
+                            Text("A review by " + r.username).font(.headline).fontWeight(.bold).frame(alignment: .leading).foregroundColor(Color.black)
+                            Text("Written by " + r.username + " on " + r.created_at).frame(alignment: .leading).foregroundColor(Color.gray)
+                            
+                        }.padding(10)
+                        
+                      
                         HStack {
                             Image(systemName: "star.fill").foregroundColor(Color.red)
                             Text(r.rating).frame(alignment: .leading).foregroundColor(Color.black)
                         }
-                        Spacer()
-                        Text(r.content).frame(alignment: .leading).lineLimit(3).foregroundColor(Color.black)
-                    }.frame(width: 350, alignment: .center).padding(15).addBorder(Color.gray, width: 1, cornerRadius: 10)
+                   
+                        Text(r.content).padding(10).frame(alignment: .leading).lineLimit(3).foregroundColor(Color.black)
+                    }.frame(width: 350, alignment: .center).addBorder(Color.gray, width: 1, cornerRadius: 10)
                 Spacer()
              
                     // EmptyView()

@@ -30,6 +30,7 @@
 		50F0F7D7262CECCD00D08B12 /* WatchlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F0F7D6262CECCD00D08B12 /* WatchlistView.swift */; };
 		50F6A026262EA19000A5A668 /* DetailVM2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6A025262EA19000A5A668 /* DetailVM2.swift */; };
 		50F6A1C42638E25800A5A668 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6A1C32638E25800A5A668 /* Debouncer.swift */; };
+		50F6A1E7263B44CD00A5A668 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50F6A1E6263B44CC00A5A668 /* LaunchScreen.storyboard */; };
 		78068A239990ABC27371C1AB /* Pods_hw9Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 910193C6745C3392BFE0A00E /* Pods_hw9Tests.framework */; };
 		A3D955B74A8E1A17E32F4BB9 /* Pods_hw9_hw9UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D052FC3867756EB97DC08803 /* Pods_hw9_hw9UITests.framework */; };
 /* End PBXBuildFile section */
@@ -84,6 +85,7 @@
 		50F0F7D6262CECCD00D08B12 /* WatchlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistView.swift; sourceTree = "<group>"; };
 		50F6A025262EA19000A5A668 /* DetailVM2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailVM2.swift; sourceTree = "<group>"; };
 		50F6A1C32638E25800A5A668 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
+		50F6A1E6263B44CC00A5A668 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E2BCE536D2CA7322F28B3BE /* Pods-hw9Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hw9Tests.debug.xcconfig"; path = "Target Support Files/Pods-hw9Tests/Pods-hw9Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		910193C6745C3392BFE0A00E /* Pods_hw9Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hw9Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE531FABEB5E905D6E01C769 /* Pods-hw9.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hw9.release.xcconfig"; path = "Target Support Files/Pods-hw9/Pods-hw9.release.xcconfig"; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			children = (
 				50F0F794262A386B00D08B12 /* DetailView.swift */,
 				50F0F7AB262AAEAB00D08B12 /* ReviewView.swift */,
+				50F6A1E6263B44CC00A5A668 /* LaunchScreen.storyboard */,
 				50F0F76D26291E2200D08B12 /* CarouselView.swift */,
 				50F0F78C262A16F800D08B12 /* CarouselView2.swift */,
 				50F0F7A6262A9F5E00D08B12 /* CastView.swift */,
@@ -350,6 +353,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F6A1E7263B44CD00A5A668 /* LaunchScreen.storyboard in Resources */,
 				508C08BF262778BB00345CDD /* Preview Assets.xcassets in Resources */,
 				508C08BC262778BB00345CDD /* Assets.xcassets in Resources */,
 			);

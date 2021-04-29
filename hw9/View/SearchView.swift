@@ -129,9 +129,18 @@ struct SearchBar: UIViewRepresentable {
           //  onTextChanged(text)
             searchMovies(input: text)
         }
+        func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+
+           searchBar.setShowsCancelButton(true, animated: true)
+
+        }
+        func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+
+            searchBar.setShowsCancelButton(false, animated: true)
+        }
         func searchMovies(input: String) {
            // empty = false
-            if (!input.isEmpty) {
+            if (!input.isEmpty && input.count > 2) {
                 debouncer.run(action: {
                     self.searchVM.load(query: input)
                 })
@@ -140,6 +149,13 @@ struct SearchBar: UIViewRepresentable {
                  //   empty = true
                 }
             }
+        }
+        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+            text = ""
+            searchVM.results = []
+            searchBar.text = nil
+            searchBar.setShowsCancelButton(false, animated: true)
+            searchBar.endEditing(true)
         }
     }
     

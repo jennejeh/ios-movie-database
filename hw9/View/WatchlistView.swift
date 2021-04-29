@@ -23,7 +23,7 @@ struct WatchlistView: View {
                 Text("Watchlist is empty").font(.title).foregroundColor(Color.gray).frame(alignment: .center)
             }
             else {
-                Text("Watchlist").frame(width: 350, alignment: .leading).font(.title)
+                Text("Watchlist").fontWeight(.bold).frame(width: 350, alignment: .leading).font(.title)
                 LazyVGrid(
                     columns: columns,
                     alignment: .center,
@@ -31,7 +31,7 @@ struct WatchlistView: View {
                 ) {
                     ForEach(movies) {
                         movie in
-                        let _ = print(movie.title)
+//                        let _ = print(movie.title)
                         NavigationLink(destination: DetailView(id:movie.id, media_type: movie.media_type)) {
                         KFImage(URL(string:  movie.backdrop_path ))
                             .resizable()

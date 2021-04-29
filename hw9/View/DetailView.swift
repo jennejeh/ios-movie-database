@@ -34,6 +34,7 @@ struct DetailView: View {
     @State var movie = Movie()
     var recommended = [Movie]()
     var body: some View {
+        
         ScrollView{
             if (VM.fetched) {
                 LazyVStack(alignment: .leading){
@@ -49,24 +50,23 @@ struct DetailView: View {
                     }
                     RecommendedView(movies: VM.recommended, isMovie: self.media_type)
                 }.padding(15)
-//                .toast(isPresented: $showToast) {
-//                    HStack {
-//                        Text(title + "\(added ? " was removed from" : " was added to") Watchlist").multilineTextAlignment(.center)
-//                    }
-//                }
+
             }
             else {
-                ProgressView("Fetching Data...")
+                ProgressView("Fetching Data...").toast(isPresented: $showToast) {
+                    HStack {
+                        Text(title + "\(added ? " was removed from" : " was added to") Watchlist").multilineTextAlignment(.center)
+                    }
+                }
             }
         }.toolbar{
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                ToolbarView(movie: VM.movie,showToast: $showToast, added: $added, title: $title, loaded: $loaded)
+                ToolbarView(movie: VM.movie,showToast: $showToast, added: $added, title: $title, loaded: $VM.fetched)
             }
         }
         .onAppear{
             if (self.media_type == "movie") {
                 VM.load(id: self.id, isMovie:true)
-                loaded = true
             }
             else  {
                 VM.load(id: self.id, isMovie: false)
@@ -142,8 +142,8 @@ struct details: View {
     var movie : Movie
     var body: some View {
         if (movie.trailer != "") {
-            let _ = print("Trailer")
-            let _ = print(movie.trailer)
+           // let _ = print("Trailer")
+            //let _ = print(movie.trailer)
             LazyVStack{
                 YTWrapper(videoID: movie.trailer.replacingOccurrences(of: "\"", with: "")).frame(height: 200)
             }
@@ -194,6 +194,7 @@ struct ToolbarView: View {
             do {
                 array = try JSONDecoder().decode([Movie].self, from: data)
                 if (!array.contains(movie)) { // not in watchlist, ADD
+                    let _ = print("ADDED ", movie.title)
                     do {
                         array.append(movie)
                         let data = try JSONEncoder().encode(array)
@@ -223,7 +224,7 @@ struct ToolbarView: View {
             movie.watchlist = true
         }
         
-        print(movie.watchlist)
+      //  print(movie.watchlist)
         
         if (!self.showToast) {
             withAnimation {
@@ -234,6 +235,7 @@ struct ToolbarView: View {
     func facebook(movie: Movie){
         let full = "https://www.facebook.com/sharer/sharer.php?u=" + "https://www.themoviedb.org/" + movie.media_type + "/" + String(movie.id)
         guard let url = URL(string: full) else { return }
+        let _ = print(url)
         UIApplication.shared.open(url)
     }
     func twitter(movie: Movie){
@@ -245,19 +247,30 @@ struct ToolbarView: View {
         let tweetUrl = URL(string: escapedShareString)
         UIApplication.shared.open(tweetUrl!)
     }
+    
     var body: some View {
         if (loaded) {
             HStack {
-                Button(action: {
-                    print(movie.watchlist)
-                    watchlist(movie: movie)
+//                Button(action: {
+//                    print(movie.watchlist)
+//                    watchlist(movie: movie)
+//                    showToast.toggle()
+//                }) {
+//                    let _ =  print(movie.watchlist)
+//                    let _ =  print(movie.title)
+//
+//                    Image(systemName: movie.watchlist ? "bookmark.fill" : "bookmark")
+//                }
+                Label("", systemImage : (movie.watchlist ? "bookmark.fill" : "bookmark")).foregroundColor(Color.black).onTapGesture{
+                   // print(movie.watchlist)
+                    self.watchlist(movie: movie)
                     showToast.toggle()
-                }) {
-                    let _ =  print(movie.watchlist)
-                    let _ =  print(movie.title)
-                    
-                    Image(systemName: movie.watchlist ? "bookmark.fill" : "bookmark")
                 }
+                 //   let _ =  print(movie.watchlist)
+                   // let _ =  print(movie.title)
+                    
+                    
+                
                 Button(action: {
                     facebook(movie:movie)
                 }) {

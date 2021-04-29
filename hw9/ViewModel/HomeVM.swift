@@ -37,7 +37,8 @@ class HomeVM: ObservableObject {
        
     }
     init() {
-        var url = "http://127.0.0.1:8080/currentmovies"
+        let base = "http://127.0.0.1:8080/"
+        var url = base + "currentmovies"
         Alamofire.request(url,method: .get).responseData{ (data) in
             let json = JSON(data.data!)
            
@@ -47,7 +48,7 @@ class HomeVM: ObservableObject {
 
                 self.currentmovies.append(m)
             }
-            url = "http://127.0.0.1:8080/topmovies"
+            url = base + "topmovies"
             Alamofire.request(url,method: .get).responseData{ (data) in
                 let json = JSON(data.data!)
                 
@@ -56,7 +57,7 @@ class HomeVM: ObservableObject {
                     m.watchlist = self.watchlist(movie: m)
                     self.topmovies.append(m)
                 }
-                url = "http://127.0.0.1:8080/popularmovies"
+                url = base + "popularmovies"
                 Alamofire.request(url,method: .get).responseData{ (data) in
                     let json = JSON(data.data!)
                 
@@ -65,7 +66,7 @@ class HomeVM: ObservableObject {
                         m.watchlist = self.watchlist(movie: m)
                         self.popularmovies.append(m)
                     }
-                    url = "http://127.0.0.1:8080/trendingshows"
+                    url = base + "trendingshows"
                     Alamofire.request(url, method: .get).responseData{ (data) in
                       
                         let json = JSON(data.data!)
@@ -75,7 +76,7 @@ class HomeVM: ObservableObject {
                             m.watchlist = self.watchlist(movie: m)
                             self.trendingshows.append(m)
                         }
-                        url = "http://127.0.0.1:8080/topshows"
+                        url = base + "topshows"
                         Alamofire.request(url,method: .get).responseData{ (data) in
                             let json = JSON(data.data!)
                       
@@ -84,7 +85,7 @@ class HomeVM: ObservableObject {
                                 m.watchlist = self.watchlist(movie: m)
                                 self.topshows.append(m)
                             }
-                            url = "http://127.0.0.1:8080/popularshows"
+                            url = base + "popularshows"
                             Alamofire.request(url,method: .get).responseData{ (data) in
                                 let json = JSON(data.data!)
                    
